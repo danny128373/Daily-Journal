@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="stylesheet" href="journal.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <h1>Daily Journal</h1>
   <form action="">
     <fieldset>
       <label for="journalDate">Date of Entry</label>
-      <input type="date" name="journalDate" id="journalDate"> 
+      <input type="date" name="journalDate" id="journalDate"><br><br>
+      <label for="concepts">Concepts covered</label>
+      <input type="text" name="concepts" id="concepts"><br><br>
+      <label for="journalEntry">Journal Entry</label>
+      <input type="text" name="journalEntry" id="journalEntry"><br><br>
+      <label for="moodChoice">Choose a mood</label>
+      <input list="mood" id="moodChoice" name="moodChoice" /><br><br>
+
+      <datalist id="mood">
+        <option value="Happy">
+        <option value="Sad">
+        <option value="Confused">
+        <option value="Angry">
+        <option value="Indifferent">
+        <option value="Satisfied">
+      </datalist>
     </fieldset>
+    <input type="submit" value="Submit">
   </form>
 </body>
+
 </html>
