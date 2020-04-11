@@ -1,13 +1,28 @@
+h1 {
+  text-align: center;
+  width: 30%;
+}
 .container {
   display: flex;
+  flex-direction: column; 
+}
+
+label {
+  margin: .5em .5em 0 .5em;
+}
+div {
+  display: flex;
   flex-direction: column;
-  justify-content: start;
+  border: 2px solid black;
+  margin: 0 0 .1em 0px;
+  width: 30%;
 }
 
 input {
   border: 1.5px black solid;
-  margin: .5em 0;
+  margin: .5em .5em;
   width: min-content;
+  margin: .5em .5em;
 }
 
 .button {
@@ -22,4 +37,5 @@ textarea {
   margin: 6.6625px 0px;
   width: 157px;
   height: 32px;
+  margin: .5em .5em;
 }

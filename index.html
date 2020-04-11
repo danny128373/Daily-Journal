@@ -12,23 +12,33 @@
   <h1>Daily Journal</h1>
   <form action="">
     <section class="container">
-      <label for="journalDate">Date of Entry</label>
-      <input type="date" name="journalDate" id="journalDate">
-      <label for="concepts">Concepts covered</label>
-      <input type="text" name="concepts" id="concepts">
-      <label for="journalEntry" name="journalEntry" id="journalEntry">Journal Entry</label>
-      <textarea rows="2" cols="30" name="description"></textarea>
-      <label for="moodChoice">Mood of the day</label>
-      <input list="mood" id="moodChoice" name="moodChoice">
+      <div>
+        <label for="journalDate">Date of Entry</label>
+        <input type="date" name="journalDate" id="journalDate">
+      </div>
+      <div>
+        <label for="concepts">Concepts covered</label>
+        <input type="text" name="concepts" id="concepts">
+      </div>
+      <div>
+        <label for="journalEntry" name="journalEntry" id="journalEntry">Journal Entry</label>
+        <textarea rows="2" cols="30" name="description"></textarea>
+      </div>
+      <div>
+        <label for="moodChoice">Mood of the day</label>
+        <input list="mood" id="moodChoice" name="moodChoice">
+        <datalist id="mood">
+          <option value="Happy" selected></option>
+          <option value="Sad">
+          <option value="Confused">
+          <option value="Angry">
+          <option value="Indifferent">
+          <option value="Satisfied">
+        </datalist>
+      </div>
 
-      <datalist id="mood">
-        <option value="Happy" selected></option>
-        <option value="Sad">
-        <option value="Confused">
-        <option value="Angry">
-        <option value="Indifferent">
-        <option value="Satisfied">
-      </datalist>
+
+
     </section>
     <input class="button" type="submit" value="Record Journal Entry">
   </form>
