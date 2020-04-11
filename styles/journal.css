@@ -1,14 +1,25 @@
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: start;
 }
 
 input {
   border: 1.5px black solid;
   margin: .5em 0;
+  width: min-content;
 }
 
 .button {
   width: fit-content;
   margin: 1em 0;
+}
+
+textarea {
+  border: 1.5px black solid;
+  margin: .5em 0;
+  width: min-content;
+  margin: 6.6625px 0px;
+  width: 157px;
+  height: 32px;
 }
