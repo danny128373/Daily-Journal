@@ -1,24 +1,5 @@
 import { fetchJournalEntries } from "./data.js";
 
-fetchJournalEntries();
-
-const submitJournalEntry = document.getElementById("recordJournalEnry");
-
-submitJournalEntry.addEventListener("click", () => {
-  fetch("http://localhost:8088/journalEntries", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newJournalEntry)
-  })//create chained promises
-})
-
-const journalDateInput = document.getElementById("journalDate").value;
-const journalConceptsInput = document.getElementById("concepts").value;
-const journalEntryInput = document.getElementById("journalEntryInput").value;
-const journalMoodInput = document.getElementById("mood").value;
-
 const journalEntryFactoryFunction = (date, concepts, journalEntry, mood) => {
   return {
     date: date,
@@ -28,8 +9,20 @@ const journalEntryFactoryFunction = (date, concepts, journalEntry, mood) => {
   }
 }
 
-// Invoke the factory function, passing along the form field values
-const newJournalEntry = journalEntryFactoryFunction(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
+const submitJournalEntry = document.querySelector("#recordJournalEntry");
 
-// Use `fetch` with the POST method to add your entry to your API
+submitJournalEntry.addEventListener("click", () => {
+  debugger;
+  const journalDateInput = document.getElementById("journalDate").value;
+  const journalConceptsInput = document.getElementById("concepts").value;
+  const journalEntryInput = document.getElementById("journalEntryInput").value;
+  const journalMoodInput = document.getElementById("mood").value;
+  const newJournalEntry = journalEntryFactoryFunction(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
+  let url = `http://localhost:8088/journalEntries`;
+  var request = new XMLHttpRequest(url);
+  request.open('POST', url);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.send(JSON.stringify(newJournalEntry));
+})
 
+fetchJournalEntries();
