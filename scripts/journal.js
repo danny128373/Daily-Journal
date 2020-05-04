@@ -1,13 +1,4 @@
-import { fetchJournalEntries } from "./data.js";
-
-const journalEntryFactoryFunction = (date, concepts, journalEntry, mood) => {
-  return {
-    date: date,
-    concepts: concepts,
-    entry: journalEntry,
-    mood: mood
-  }
-}
+import { fetchJournalEntries, saveDataEntry } from "./data.js";
 
 const submitJournalEntry = document.querySelector("#recordJournalEntry");
 submitJournalEntry.addEventListener("click", () => {
@@ -16,7 +7,8 @@ submitJournalEntry.addEventListener("click", () => {
   const journalConceptsInput = document.getElementById("concepts").value;
   const journalEntryInput = document.getElementById("journalEntryInput").value;
   const journalMoodInput = document.getElementById("mood").value;
-  const newJournalEntry = journalEntryFactoryFunction(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
+
+  const newJournalEntry = saveDataEntry(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
 
   let url = `http://localhost:8088/journalEntries`;
   // var request = new XMLHttpRequest(url);
