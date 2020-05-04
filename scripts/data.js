@@ -12,4 +12,13 @@ const fetchJournalEntries = () => {
     })
 }
 
-export { fetchJournalEntries };
+const saveDataEntry = (date, concepts, journalEntry, mood) => {
+  return {
+    date: date,
+    concepts: concepts,
+    entry: journalEntry,
+    mood: mood
+  }
+}
+
+export { fetchJournalEntries, saveDataEntry };
