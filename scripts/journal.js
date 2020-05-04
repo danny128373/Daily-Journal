@@ -10,7 +10,6 @@ const journalEntryFactoryFunction = (date, concepts, journalEntry, mood) => {
 }
 
 const submitJournalEntry = document.querySelector("#recordJournalEntry");
-
 submitJournalEntry.addEventListener("click", () => {
   debugger;
   const journalDateInput = document.getElementById("journalDate").value;
@@ -18,11 +17,23 @@ submitJournalEntry.addEventListener("click", () => {
   const journalEntryInput = document.getElementById("journalEntryInput").value;
   const journalMoodInput = document.getElementById("mood").value;
   const newJournalEntry = journalEntryFactoryFunction(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
+
   let url = `http://localhost:8088/journalEntries`;
-  var request = new XMLHttpRequest(url);
-  request.open('POST', url);
-  request.setRequestHeader("Content-Type", "application/json");
-  request.send(JSON.stringify(newJournalEntry));
+  // var request = new XMLHttpRequest(url);
+  // request.open('POST', url);
+  // request.setRequestHeader("Content-Type", "application/json");
+  // request.send(JSON.stringify(newJournalEntry));
+  // fetchJournalEntries();
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newJournalEntry)
+  }).then(response => response.json())
+    .then(entries => {
+      fetchJournalEntries();
+    })
 })
 
 fetchJournalEntries();
