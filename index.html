@@ -22,23 +22,15 @@
       </div>
       <div>
         <label for="journalEntry" name="journalEntry" id="journalEntry">Journal Entry</label>
-        <textarea rows="2" cols="30" name="description"></textarea>
+        <textarea rows="2" cols="30" name="description" id="journalEntryInput"></textarea>
       </div>
       <div>
         <label for="moodChoice">Mood of the day</label>
-        <input list="mood" id="moodChoice" name="moodChoice">
-        <datalist id="mood">
-          <option value="Happy" selected></option>
-          <option value="Sad">
-          <option value="Confused">
-          <option value="Excited">
-          <option value="Indifferent">
-          <option value="Satisfied">
-        </datalist>
+        <input type="text" name="mood" id="mood">
       </div>
 
     </section>
-    <input class="button" type="submit" value="Record Journal Entry">
+    <button id="recordJournalEntry">Record Journal Entry</button>
   </form>
   <article class="entryLog"></article>
 
