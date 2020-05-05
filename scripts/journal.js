@@ -9,14 +9,19 @@ submitJournalEntry.addEventListener("click", () => {
   const journalEntryInput = document.getElementById("journalEntryInput").value;
   const journalMoodInput = document.getElementById("mood").value;
 
-  const newJournalEntry = newEntryObject(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
+  if (journalConceptsInput.length < 30) {
+    const newJournalEntry = newEntryObject(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
 
-  postJournalEntry(newJournalEntry)
-    .then(entries => {
-      console.log(entries);
-      journalContainer.innerHTML = "";
-      fetchJournalEntries();
-    })
+    postJournalEntry(newJournalEntry)
+      .then(entries => {
+        console.log(entries);
+        journalContainer.innerHTML = "";
+        fetchJournalEntries();
+      })
+  } else {
+    alert("Concepts input has to be less than 30 characters.")
+  }
+
 })
 
 fetchJournalEntries();
