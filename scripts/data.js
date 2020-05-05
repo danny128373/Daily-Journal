@@ -1,7 +1,7 @@
 import { journalContainer, makeJournalEntryComponent } from "./entryComponent.js";
 
 const fetchJournalEntries = () => {
-  fetch("http://localhost:8088/journalEntries")
+  return fetch("http://localhost:8088/journalEntries")
     .then(journalEntries => journalEntries.json())  // Parse as JSON
     .then(entries => {
       //Iterating through my entries from json that now is in JS and adding
@@ -12,13 +12,24 @@ const fetchJournalEntries = () => {
     })
 }
 
-const saveDataEntry = (date, concepts, journalEntry, mood) => {
+const newEntryObject = (date, concepts, entry, mood) => {
   return {
-    date: date,
-    concepts: concepts,
-    entry: journalEntry,
-    mood: mood
+    date,
+    concepts,
+    entry,
+    mood
   }
 }
 
-export { fetchJournalEntries, saveDataEntry };
+const postJournalEntry = (newJournalEntry) => {
+  return fetch(`http://localhost:8088/journalEntries`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newJournalEntry)
+  }).then(data => data.json())
+}
+
+
+export { fetchJournalEntries, newEntryObject, postJournalEntry };
