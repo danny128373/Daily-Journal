@@ -14,9 +14,9 @@ submitJournalEntry.addEventListener("click", () => {
 
   if (journalConceptsInput.length > 30) {
     alert("Concepts input has to be less than 30 characters.");
-  } else if (!badWords.test(journalEntryInput).value && !badWords.test(journalConceptsInput).value) {
+  } else if (badWords.test(journalEntryInput)) {
     alert("Don't f*cking cuss");
-  } else if (!regex.test(journalEntryInput).value && journalDateInput != "" && journalConceptsInput != "" && journalEntryInput != "" &&
+  } else if (regex.test(journalEntryInput) && journalDateInput != "" && journalConceptsInput != "" && journalEntryInput != "" &&
     journalMoodInput != "") {
     const newJournalEntry = newEntryObject(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
 
