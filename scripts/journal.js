@@ -9,7 +9,12 @@ submitJournalEntry.addEventListener("click", () => {
   const journalEntryInput = document.getElementById("journalEntryInput").value;
   const journalMoodInput = document.getElementById("mood").value;
 
-  if (journalConceptsInput.length < 30) {
+  const regex = /^[0-9a-zA-Z();.!]+$/;
+
+  if (journalConceptsInput.length > 30) {
+    alert("Concepts input has to be less than 30 characters.");
+  } else if (!regex.test(journalEntryInput).value && journalDateInput != "" && journalConceptsInput != "" && journalEntryInput != "" &&
+    journalMoodInput != "") {
     const newJournalEntry = newEntryObject(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
 
     postJournalEntry(newJournalEntry)
@@ -19,7 +24,7 @@ submitJournalEntry.addEventListener("click", () => {
         fetchJournalEntries();
       })
   } else {
-    alert("Concepts input has to be less than 30 characters.")
+    alert("Only characters acceptable are: a-z, A-Z, 0-9, and ();.! Also, make sure you leave no empty inputs.")
   }
 
 })
