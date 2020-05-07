@@ -1,35 +1,43 @@
 import { journalContainer, makeJournalEntryComponent } from "./entryComponent.js";
 
-const fetchJournalEntries = () => {
-  return fetch("http://localhost:8088/journalEntries")
-    .then(journalEntries => journalEntries.json())  // Parse as JSON
-    .then(entries => {
-      //Iterating through my entries from json that now is in JS and adding
-      //every entry by calling makeJournalEntryComponent
-      for (let entry of entries) {
-        journalContainer.innerHTML += makeJournalEntryComponent(entry);
-      }
-    })
-}
 
-const newEntryObject = (date, concepts, entry, mood) => {
-  return {
-    date,
-    concepts,
-    entry,
-    mood
+const API = {
+  fetchJournalEntries() {
+    return fetch("http://localhost:8088/entries")
+      .then(journalEntries => journalEntries.json())  // Parse as JSON
+      .then(entries => {
+        //Iterating through my entries from json that now is in JS and adding
+        //every entry by calling makeJournalEntryComponent
+        journalContainer.innerHTML = "";
+        for (let entry of entries) {
+          journalContainer.innerHTML += makeJournalEntryComponent(entry);
+        }
+      })
+  },
+  postJournalEntry(newJournalEntry) {
+    return fetch(`http://localhost:8088/entries`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newJournalEntry)
+    }).then(data => data.json())
+  },
+  newEntryObject(date, concepts, entry, mood) {
+    return {
+      date,
+      concepts,
+      entry,
+      mood
+    }
+  },
+  deleteEntry(entryId) {
+    return fetch(`http://localhost:8088/entries/${entryId}`, {
+      method: "DELETE"
+    })
   }
 }
 
-const postJournalEntry = (newJournalEntry) => {
-  return fetch(`http://localhost:8088/journalEntries`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newJournalEntry)
-  }).then(data => data.json())
-}
+export default API;
 
-
-export { fetchJournalEntries, newEntryObject, postJournalEntry };
+// { fetchJournalEntries, newEntryObject, postJournalEntry };
