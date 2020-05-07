@@ -42,8 +42,26 @@ const listener = {
           .then(API.fetchJournalEntries)
       }
     })
+  },
+  registerRadioListenerHappy() {
+    document.querySelector("#moodChoice1").addEventListener("click", (event => {
+      const mood = event.target.value;
+      fetch('http://localhost:8088/entries')
+        .then(journalEntries => journalEntries.json())
+        .then(entries => {
+          const happy = []
+          for (let entry of entries) {
+            if (entry.mood === 'happy') {
+              happy.push(entry);
+            }
+          }
+          journalContainer.innerHTML = "";
+          for (let hap of happy) {
+            journalContainer.innerHTML += makeJournalEntryComponent(hap);
+          }
+        })
+    }))
   }
-
 }
 
 export default listener;
