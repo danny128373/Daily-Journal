@@ -7,3 +7,5 @@ listener.registerPostListener();
 API.fetchJournalEntries();
 
 listener.registerDeleteListener();
+
+listener.registerRadioListenerHappy();

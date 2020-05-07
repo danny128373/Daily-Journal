@@ -33,6 +33,22 @@
     <button id="recordJournalEntry">Record Journal Entry</button>
   </form>
   <article class="entryLog"></article>
+  <form>
+    <p>Filter Journal Entries By Mood:</p>
+    <div>
+      <input type="radio" id="moodChoice1" name="moodRadio" value="happy">
+      <label for="happy">Happy</label>
+
+      <input type="radio" id="moodChoice2" name="moodRadio" value="sad">
+      <label for="sad">Sad</label>
+
+      <input type="radio" id="mooodChoice3" name="moodRadio" value="tired">
+      <label for="tired">Tired</label>
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
 
   <script type="module" src="/scripts/journal.js"></script>
 
