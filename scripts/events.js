@@ -61,6 +61,25 @@ const listener = {
           }
         })
     }))
+  },
+  registerRadioListenerSad() {
+    document.querySelector("#moodChoice2").addEventListener("click", (event => {
+      const mood = event.target.value;
+      fetch('http://localhost:8088/entries')
+        .then(journalEntries => journalEntries.json())
+        .then(entries => {
+          const sad = []
+          for (let entry of entries) {
+            if (entry.mood === 'sad') {
+              sad.push(entry);
+            }
+          }
+          journalContainer.innerHTML = "";
+          for (let s of sad) {
+            journalContainer.innerHTML += makeJournalEntryComponent(s);
+          }
+        })
+    }))
   }
 }
 
