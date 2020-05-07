@@ -1,7 +1,7 @@
 import { journalContainer, makeJournalEntryComponent } from "./entryComponent.js";
 
 const fetchJournalEntries = () => {
-  return fetch("http://localhost:8088/journalEntries")
+  return fetch("http://localhost:8088/entries")
     .then(journalEntries => journalEntries.json())  // Parse as JSON
     .then(entries => {
       //Iterating through my entries from json that now is in JS and adding
@@ -22,7 +22,7 @@ const newEntryObject = (date, concepts, entry, mood) => {
 }
 
 const postJournalEntry = (newJournalEntry) => {
-  return fetch(`http://localhost:8088/journalEntries`, {
+  return fetch(`http://localhost:8088/entries`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
