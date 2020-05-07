@@ -33,7 +33,17 @@ const listener = {
         alert("Only characters acceptable are: a-z, A-Z, 0-9, and ();.! Also, make sure you leave no empty inputs.")
       }
     })
+  },
+  registerDeleteListener() {
+    document.querySelector(".entryLog").addEventListener("click", (event) => {
+      if (event.target.id.startsWith("deleteEntry--")) {
+        const entryId = event.target.id.split("--")[1]
+        API.deleteEntry(entryId)
+          .then(API.fetchJournalEntries)
+      }
+    })
   }
+
 }
 
 export default listener;
