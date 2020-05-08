@@ -80,6 +80,25 @@ const listener = {
           }
         })
     }))
+  },
+  registerRadioListenerTired() {
+    document.querySelector("#moodChoice3").addEventListener("click", (event => {
+      const mood = event.target.value;
+      fetch('http://localhost:8088/entries')
+        .then(journalEntries => journalEntries.json())
+        .then(entries => {
+          const tired = []
+          for (let entry of entries) {
+            if (entry.mood === 'tired') {
+              tired.push(entry);
+            }
+          }
+          journalContainer.innerHTML = "";
+          for (let t of tired) {
+            journalContainer.innerHTML += makeJournalEntryComponent(t);
+          }
+        })
+    }))
   }
 }
 
