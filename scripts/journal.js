@@ -1,11 +1,9 @@
 import API from "./data.js";
-
 import listener from "./events.js";
 
-listener.registerPostListener();
-
 API.fetchJournalEntries();
-
+listener.registerPostListener();
 listener.registerDeleteListener();
-
 listener.registerRadioListenerHappy();
+listener.registerRadioListenerTired();
+listener.registerRadioListenerSad();
