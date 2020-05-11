@@ -21,7 +21,7 @@ const listener = {
         alert("Concepts input has to be less than 30 characters.");
       } else if (badWords.test(journalEntryInput)) {
         alert("Don't f*cking cuss");
-      } else if (//regex.test(journalEntryInput) &&
+      } else if (regex.test(journalEntryInput) &&
         journalDateInput != "" && journalConceptsInput != "" && journalEntryInput != "" &&
         journalMoodInput != "") {
         const newJournalEntry = API.newEntryObject(journalDateInput, journalConceptsInput, journalEntryInput, journalMoodInput);
