@@ -46,7 +46,7 @@ const listener = {
   registerEditListener() {
     document.querySelector(".entryLog").addEventListener("click", event => {
       const entryId = event.target.id.split("--")[1];
-      console.log('you click me');
+
     })
   },
   registerRadioListenerHappy() {
