@@ -5,5 +5,6 @@ API.fetchJournalEntries();
 listener.registerPostListener();
 listener.registerDeleteListener();
 listener.registerRadioListenerHappy();
-listener.registerRadioListenerTired();
 listener.registerRadioListenerSad();
+listener.registerRadioListenerTired();
+listener.registerEditListener();

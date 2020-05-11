@@ -37,10 +37,16 @@ const listener = {
   registerDeleteListener() {
     document.querySelector(".entryLog").addEventListener("click", (event) => {
       if (event.target.id.startsWith("deleteEntry--")) {
-        const entryId = event.target.id.split("--")[1]
+        const entryId = event.target.id.split("--")[1];
         API.deleteEntry(entryId)
           .then(API.fetchJournalEntries)
       }
+    })
+  },
+  registerEditListener() {
+    document.querySelector(".entryLog").addEventListener("click", event => {
+      const entryId = event.target.id.split("--")[1];
+      console.log('you click me');
     })
   },
   registerRadioListenerHappy() {
