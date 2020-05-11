@@ -35,6 +35,20 @@ const API = {
     return fetch(`http://localhost:8088/entries/${entryId}`, {
       method: "DELETE"
     })
+  },
+  updateEntry(entryObject, id) {
+    return fetch(`http://localhost:8088/entries/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(entryObject)
+    })
+      .then(data => data.json())
+  },
+  getEntryById(entryId) {
+    return fetch(`http://localhost:8088/entries/${entryId}`)
+      .then(data => data.json())
   }
 }
 

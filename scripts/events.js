@@ -1,5 +1,7 @@
 import { journalContainer, makeJournalEntryComponent } from "./entryComponent.js";
 import API from "./data.js";
+import { entryIdInput, dateInput, conceptsInput, journalEntryInput, moodInput, clearForm, prepopulateForm } from "./entriesDOM.js";
+
 
 const submitJournalEntry = document.querySelector("#recordJournalEntry");
 
@@ -37,9 +39,20 @@ const listener = {
   registerDeleteListener() {
     document.querySelector(".entryLog").addEventListener("click", (event) => {
       if (event.target.id.startsWith("deleteEntry--")) {
-        const entryId = event.target.id.split("--")[1]
+        const entryId = event.target.id.split("--")[1];
         API.deleteEntry(entryId)
           .then(API.fetchJournalEntries)
+      }
+    })
+  },
+  registerEditListener() {
+    document.querySelector(".entryLog").addEventListener("click", event => {
+      if (event.target.id.startsWith("editEntry--")) {
+        const entryId = event.target.id.split("--")[1];
+        API.getEntryById(entryId)
+          .then(entry => {
+            prepopulateForm(entry);
+          })
       }
     })
   },
@@ -99,6 +112,32 @@ const listener = {
           }
         })
     }))
+  },
+  registerSubmitListener() {
+    const submitFormBtn = document.getElementById("form-submit")
+    submitFormBtn.addEventListener("click", event => {
+      event.preventDefault();
+      const entryId = entryIdInput.value
+
+      const entryFormValues = {
+        "date": dateInput.value,
+        "concepts": conceptsInput.value,
+        "entry": journalEntryInput.value,
+        "mood": moodInput.value
+      }
+
+      if (entryId != "") {
+        API.updateEntry(entryFormValues, entryId)
+          .then(API.fetchJournalEntries);
+        clearForm()
+      }
+      // } else {
+      //   API.createSong(entryFormValues)
+      //     .then(fetchJournalEntries)
+      //   clearForm()
+      // }
+
+    })
   }
 }
 
