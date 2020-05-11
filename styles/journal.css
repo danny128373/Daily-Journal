@@ -1,6 +1,14 @@
+body {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 960px;
+  background: black;
+  color: white;
+}
+
 h1 {
   text-align: center;
-  width: 30%;
 }
 
 .container {
@@ -17,7 +25,7 @@ div {
   flex-direction: column;
   border: 2px solid black;
   margin: 0 0 .1em 0px;
-  width: 30%;
+  background-color: orangered;
 }
 
 input {
@@ -40,4 +48,27 @@ textarea {
   width: 157px;
   height: 32px;
   margin: .5em .5em;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  padding: .5em;
+}
+
+.entryContainer {
+  padding: .5em;
+  background: orangered
+}
+
+button {
+  border-radius: .4em;
+}
+
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  margin: 0 0 .1em 0px;
+  background: orangered;
 }
