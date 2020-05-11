@@ -16,19 +16,19 @@
   <form action="" id="entry_form">
     <input type="hidden" id="entryId" value="" />
 
-    <fieldset>
+    <fieldset class="editContainer">
       <label for="date">Date:</label>
       <input type="date" id="dateEdit">
     </fieldset>
-    <fieldset>
+    <fieldset class="editContainer">
       <label for="concepts">Concepts:</label>
       <input type="text" id="conceptsEdit">
     </fieldset>
-    <fieldset>
+    <fieldset class="editContainer">
       <label for="journalEntry">Journal Entry:</label>
       <input type="text" id="journalEntryEdit">
-    </fieldset>
-    <fieldset>
+    </fieldset class="editContainer">
+    <fieldset class="editContainer">
       <label for="mood">Mood:</label>
       <input type="text" id="moodEdit">
     </fieldset>
@@ -60,7 +60,7 @@
   </form>
   <form>
     <p>Filter Journal Entries By Mood:</p>
-    <div>
+    <div class="filterContainer">
       <input type="radio" id="moodChoice1" name="moodRadio" value="happy">
       <label for="happy">Happy</label>
 
