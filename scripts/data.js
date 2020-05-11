@@ -45,6 +45,10 @@ const API = {
       body: JSON.stringify(entryObject)
     })
       .then(data => data.json())
+  },
+  getEntryById(entryId) {
+    return fetch(`http://localhost:8088/entries/${entryId}`)
+      .then(data => data.json())
   }
 }
 

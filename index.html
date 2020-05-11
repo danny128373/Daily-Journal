@@ -10,6 +10,30 @@
 
 <body>
   <h1>Daily Journal</h1>
+  <!-- begin add/edit form -->
+  <form action="" id="entry_form">
+    <input type="hidden" id="entryId" value="" />
+
+    <fieldset>
+      <label for="date">Date:</label>
+      <input type="date" id="dateEdit">
+    </fieldset>
+    <fieldset>
+      <label for="concepts">Concepts:</label>
+      <input type="text" id="conceptsEdit">
+    </fieldset>
+    <fieldset>
+      <label for="journalEntry">Journal Entry:</label>
+      <input type="text" id="journalEntryEdit">
+    </fieldset>
+    <fieldset>
+      <label for="mood">Mood:</label>
+      <input type="text" id="moodEdit">
+    </fieldset>
+    <button id="form-submit">Submit</button>
+  </form>
+  <!-- end add/edit form -->
+
   <form action="">
     <section class="container">
       <div>
