@@ -46,6 +46,7 @@ const listener = {
     })
   },
   registerEditListener() {
+
     document.querySelector(".entryLog").addEventListener("click", event => {
       if (event.target.id.startsWith("editEntry--")) {
         const entryId = event.target.id.split("--")[1];
@@ -64,7 +65,7 @@ const listener = {
         .then(entries => {
           const happy = []
           for (let entry of entries) {
-            if (entry.mood === 'happy') {
+            if (entry.moodId === 1) {
               happy.push(entry);
             }
           }
@@ -83,7 +84,7 @@ const listener = {
         .then(entries => {
           const sad = []
           for (let entry of entries) {
-            if (entry.mood === 'sad') {
+            if (entry.moodId === 2) {
               sad.push(entry);
             }
           }
@@ -102,7 +103,8 @@ const listener = {
         .then(entries => {
           const tired = []
           for (let entry of entries) {
-            if (entry.mood === 'tired') {
+            console.log(entry)
+            if (entry.moodId === 3) {
               tired.push(entry);
             }
           }
@@ -118,12 +120,21 @@ const listener = {
     submitFormBtn.addEventListener("click", event => {
       event.preventDefault();
       const entryId = entryIdInput.value
+      var moodNumber = 0;
+      if (moodInput.value === 'happy') {
+        moodNumber = 1;
+      }
+      else if (moodInput.value === 'sad') {
+        moodNumber = 2;
+      } else {
+        moodNumber = 3;
+      }
 
       const entryFormValues = {
         "date": dateInput.value,
         "concepts": conceptsInput.value,
         "entry": journalEntryInput.value,
-        "mood": moodInput.value
+        "moodId": moodNumber
       }
 
       if (entryId != "") {

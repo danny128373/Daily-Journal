@@ -11,7 +11,7 @@ function prepopulateForm(entry) {
   entryIdInput.value = entry.id
   conceptsInput.value = entry.concepts
   journalEntryInput.value = entry.entry
-  moodInput.value = entry.mood
+  moodInput.value = entry.mood.label
 }
 
 function clearForm() {
