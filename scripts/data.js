@@ -3,7 +3,7 @@ import { journalContainer, makeJournalEntryComponent } from "./entryComponent.js
 
 const API = {
   fetchJournalEntries() {
-    return fetch("http://localhost:8088/entries")
+    return fetch("http://localhost:8088/entries?_expand=mood")
       .then(journalEntries => journalEntries.json())  // Parse as JSON
       .then(entries => {
         //Iterating through my entries from json that now is in JS and adding
@@ -15,7 +15,7 @@ const API = {
       })
   },
   postJournalEntry(newJournalEntry) {
-    return fetch(`http://localhost:8088/entries`, {
+    return fetch(`http://localhost:8088/entries?_expand=mood`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -23,21 +23,38 @@ const API = {
       body: JSON.stringify(newJournalEntry)
     }).then(data => data.json())
   },
-  newEntryObject(date, concepts, entry, mood) {
-    return {
-      date,
-      concepts,
-      entry,
-      mood
+  newEntryObject(date, concepts, entry, moodId) {
+    if (moodId === 'happy') {
+      return {
+        date,
+        concepts,
+        entry,
+        moodId: 1
+      }
+    }
+    else if (moodId === 'sad') {
+      return {
+        date,
+        concepts,
+        entry,
+        moodId: 2
+      }
+    } else {
+      return {
+        date,
+        concepts,
+        entry,
+        moodId: 3
+      }
     }
   },
   deleteEntry(entryId) {
-    return fetch(`http://localhost:8088/entries/${entryId}`, {
+    return fetch(`http://localhost:8088/entries/${entryId}?_expand=mood`, {
       method: "DELETE"
     })
   },
   updateEntry(entryObject, id) {
-    return fetch(`http://localhost:8088/entries/${id}`, {
+    return fetch(`http://localhost:8088/entries/${id}?_expand=mood`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -47,11 +64,9 @@ const API = {
       .then(data => data.json())
   },
   getEntryById(entryId) {
-    return fetch(`http://localhost:8088/entries/${entryId}`)
+    return fetch(`http://localhost:8088/entries/${entryId}?_expand=mood`)
       .then(data => data.json())
   }
 }
 
 export default API;
-
-// { fetchJournalEntries, newEntryObject, postJournalEntry };
